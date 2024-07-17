@@ -1,0 +1,23 @@
+model_name: "vit_base_patch16_224"
+output_dir: "./outputs/cddb/vit_base/"
+data_path: "./../data/CDDB/"
+batch_size: 128
+num_tasks: 5
+sched: "cosine"
+opt: "adam" 
+opt_nev: True
+opt_momentum: 0.9
+lr: 0.001
+epochs: [1, 3, 3, 3, 3]
+device: "cuda:4"
+has_output_adapter: True
+reduction_factor: 8
+has_prefix: True
+prefix_length: 15
+h_reg: 0.01
+bottleneck_factor: 4
+l_embeddings: 64
+t_embeddings: 64
+print_freq: 10
+validation: False
+dil: True

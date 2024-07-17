@@ -1,0 +1,20 @@
+model_name: "deit_tiny_patch16_224"
+data_path: "./../data/cifar100/"
+batch_size: 128
+num_tasks: 10
+opt: "adam"
+sched: "cosine" 
+opt_nev: True
+opt_momentum: 0.9
+lr: 0.001
+epochs: 15
+device: "cuda:10"
+has_atten_adapter: False
+has_output_adapter: True
+reduction_factor: 8
+has_prefix: True
+bottleneck: 20
+bottleneck_factor: 4
+print_freq: 10
+validation: False
+

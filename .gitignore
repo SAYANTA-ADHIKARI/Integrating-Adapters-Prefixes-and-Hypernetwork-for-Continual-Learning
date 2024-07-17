@@ -1,0 +1,8 @@
+__pycache__/
+logs/
+outputs/
+weights/
+data/
+.ipynb_checkpoints/
+test.ipynb
+*.csv
