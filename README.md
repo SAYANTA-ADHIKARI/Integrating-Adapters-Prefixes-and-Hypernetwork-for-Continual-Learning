@@ -1,6 +1,6 @@
-# AdaPrefix++: Integrating Adapters and hypernetwork based Prefixes for Continual Learning Implementation
+# AdaPrefix++: Integrating Adapters, Prefixes and Hypernetwork for Continual Learning Implementation
 
-This folder contains PyTorch implementation of the two methods, **AdaPrefix** and **AdaPrefix++** proposed in our paper *AdaPrefix++: Integrating Adapters and hypernetwork based Prefixes for Continual Learning*.
+This folder contains PyTorch implementation of the two methods, **AdaPrefix** and **AdaPrefix++** proposed in our paper *AdaPrefix++: Integrating Adapters, Prefixes and Hypernetwork for Continual Learning*.
 ## Datasets
 
 We provide experiments on four datasets. These datasets should be present in `/data/` folder, each with there respective `dataset_name`.:
