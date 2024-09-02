@@ -8,7 +8,7 @@ opt_nev: True
 opt_momentum: 0.9
 lr: 0.001
 epochs: 5
-device: "cuda:8"
+device: "cuda:15"
 has_output_adapter: True
 reduction_factor: 8
 has_prefix: True

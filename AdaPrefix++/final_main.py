@@ -41,10 +41,10 @@ DIFFERENT_LAYERS = {
 }
 
 DIFFERENT_LAYER_EMBEDDINGS = {
-    # "learnable": "learnable",
-    # "fixed_random": "fixed_random",
-    # "fixed_sine": "fixed_sine",
-    # "fixed_onehot": "fixed_onehot",
+    "learnable": "learnable",
+    "fixed_random": "fixed_random",
+    "fixed_sine": "fixed_sine",
+    "fixed_onehot": "fixed_onehot",
     "throughout_learnable": "throughout_learnable",
 }
 
@@ -56,16 +56,16 @@ DIFFERENT_SEEDS = {
 
 
 def experiments_with_seeds(args):
-    print(f"Running Experiments\n")
+    print("Running Experiments\n")
     start_time = time.time()
     results = {}
     avg_fwt, avg_bwt, avg_fgt, avg_cil, avg_til = [], [], [], [], []
     lr = copy.deepcopy(args.lr)
-    for z in DIFFERENT_LAYER_EMBEDDINGS.keys():
+    for z in DIFFERENT_SEEDS.keys():
         args.exp_name = z
-        args.layer_embedding_type = DIFFERENT_LAYER_EMBEDDINGS[z]
+        args.layer_embedding_type = DIFFERENT_LAYER_EMBEDDINGS["fixed_onehot"]
         args.leave_out = DIFFERENT_LAYERS["all"]
-        args.seed = DIFFERENT_SEEDS["42"]
+        args.seed = DIFFERENT_SEEDS[z]
         args.order = None
         seed_start_time = time.time()
         print(
@@ -130,7 +130,7 @@ def experiments_with_seeds(args):
     results["final"]["std_cil"] = np.std(avg_cil)
 
     results = convert_to_serializable(results)
-    with open(args.output_dir + f"results_order.json", "w") as f:
+    with open(args.output_dir + "results_order.json", "w") as f:
         json.dump(results, f, indent=4)
 
     # Printing the final results

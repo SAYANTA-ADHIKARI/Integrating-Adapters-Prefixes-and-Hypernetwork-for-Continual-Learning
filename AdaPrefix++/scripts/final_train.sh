@@ -3,7 +3,7 @@
 source /raid/srijith/miniconda3/bin/activate adaprefix
 VAR="vit_base"
 DATASET="imagenet_r"
-EXP="initialization_layer_ids"
+EXP="testing"
 
 mkdir -p ./logs/$EXP/$DATASET/$VAR/
 python final_main.py $DATASET \

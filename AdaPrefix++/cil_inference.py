@@ -149,7 +149,7 @@ def evaluate(
                 batch_logits.append(
                     model(input, prefix=prefix, adapter=adapter, task_id=task_id)[
                         "logits"
-                    ]
+                    ]  # NOTE: Change was made here!!
                 )
             logits = get_best_logits(
                 logits_list=batch_logits, total_classes=args.nb_classes

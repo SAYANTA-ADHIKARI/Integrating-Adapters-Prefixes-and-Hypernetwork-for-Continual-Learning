@@ -17,6 +17,16 @@ import datetime
 import torch
 import torch.distributed as dist
 
+TOTAL_LENGTH = 80
+
+
+def print_msg(message=None, symbol="*", start=True):
+    if start:
+        padding = (TOTAL_LENGTH - len(message) - 2) // 2
+        print(f"{symbol * padding} {message} {symbol * padding}")
+    else:
+        print(f"{symbol * TOTAL_LENGTH}\n")
+
 
 class SmoothedValue(object):
     """Track a series of values and provide access to smoothed values over a

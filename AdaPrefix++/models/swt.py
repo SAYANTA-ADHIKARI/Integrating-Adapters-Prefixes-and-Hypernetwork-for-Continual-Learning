@@ -1,4 +1,4 @@
-""" Swin Transformer
+"""Swin Transformer
 A PyTorch impl of : `Swin Transformer: Hierarchical Vision Transformer using Shifted Windows`
     - https://arxiv.org/pdf/2103.14030
 
@@ -33,9 +33,9 @@ from timm.models.layers import (
     trunc_normal_,
     _assert,
 )
-from timm.layers import resize_rel_pos_bias_table, resample_patch_embed, ndgrid
+from timm.layers import ndgrid
 from timm.models import register_notrace_function
-from timm.models import checkpoint_seq, named_apply
+from timm.models import named_apply
 from timm.models.vision_transformer import get_init_weights_vit
 from .peft.adapter import Adapter
 from .peft.prefix import Prefix
@@ -172,9 +172,7 @@ class WindowAttention(nn.Module):
     def _get_rel_pos_bias(self) -> torch.Tensor:
         relative_position_bias = self.relative_position_bias_table[
             self.relative_position_index.view(-1)
-        ].view(
-            self.window_area, self.window_area, -1
-        )  # Wh*Ww,Wh*Ww,nH
+        ].view(self.window_area, self.window_area, -1)  # Wh*Ww,Wh*Ww,nH
         relative_position_bias = relative_position_bias.permute(
             2, 0, 1
         ).contiguous()  # nH, Wh*Ww, Wh*Ww
@@ -699,8 +697,8 @@ class SwinTransformer(nn.Module):
 
     @torch.jit.ignore
     def set_grad_checkpointing(self, enable=True):
-        for l in self.layers:
-            l.grad_checkpointing = enable
+        for layer in self.layers:
+            layer.grad_checkpointing = enable
 
     def forward_features(self, x, prefix=True, adapter=True):
         x = self.patch_embed(x)
