@@ -35,7 +35,7 @@ The system we used and tested in
 
 First, create an enviroment with all the particular requirements required. To perform this, you can use :
 ```
-cd AdaPrefix_ECCV
+cd <FOLDER-NAME-CLONED-FROM-GITHUB>
 conda env create -f environment.yml
 conda activate adaprefix 
 ## Here the environment name is set to "adaprefix"
